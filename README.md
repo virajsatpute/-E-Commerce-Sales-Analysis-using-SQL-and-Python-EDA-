@@ -8,13 +8,30 @@
 This project performs a detailed exploratory data analysis (EDA) of an e-commerce dataset using **SQL** and **Python**. The dataset was ingested into a SQL database and queried using a **SQL connector in Python**. SQL was used to retrieve and manipulate the data, while Python libraries were used for further analysis and visualization. The goal is to uncover insights related to customer behavior, sales trends, seller performance, and key performance indicators (KPIs).
 
 ---
-
 ### 📂 Dataset Description
 
-The dataset used in this project is sourced from Kaggle:
-🔗 [Target E-Commerce Dataset on Kaggle](https://www.kaggle.com/datasets/devarajv88/target-dataset?select=products.csv)
+A basic data pipeline was used in this project. The process involved the following sequential steps:
 
-It includes the following tables:
+1. **Data Ingestion**
+
+   * The raw `.csv` files (from [Kaggle Target Dataset](https://www.kaggle.com/datasets/devarajv88/target-dataset?select=products.csv)) were imported and stored into a SQL database.
+   * This ingestion was handled using SQL tools or scripts to load each CSV as a separate table (e.g., `orders`, `payments`, `products`, etc.).
+
+2. **Data Extraction**
+
+   * SQL queries were written to extract relevant subsets of the data directly into Python using a SQL connector (e.g., `mysql-connector-python`).
+   * This served as the bridge between the database and Python environment.
+
+3. **Data Transformation**
+
+   * Inside SQL: Aggregations, filtering, window functions (e.g., `DENSE_RANK`, `LAG`, `MOVING AVERAGE`) were applied to structure the data.
+   * Inside Python: DataFrames were cleaned and formatted using `pandas`.
+
+4. **Data Analysis and Visualization**
+
+   * After transformation, `matplotlib` and `seaborn` were used to visualize trends, compare seller/customer metrics, and uncover insights.
+
+Dataset includes the following tables:
 
 * `customers`: Customer details including ID and location
 * `orders`: Order-level info like purchase dates and statuses
